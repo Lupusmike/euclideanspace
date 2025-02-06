@@ -1,50 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive 3D Model</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-</head>
-<body style="margin: 0; overflow: hidden;">
+    <title>Euclidean Space</title>
+  </head>
+  <body style="margin: 0;overflow: hidden;">
     <script>
-        // Scene setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
+    
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(20,20,20);
+
+    const scene = new THREE.Scene();
+
+
+    const gridlines = 20;
+    const gridsize = 30;
+//SETUP END//////////////////////////////////////
+
+    const BasicLine = new THREE.LineBasicMaterial( { color: 0x00ffff } );
+    const DashedLine = new THREE.LineDashedMaterial( { color: 0x0000ff } );
+
+    const x1x2p = new THREE.GridHelper(gridsize,gridlines,0x000000, 0x000000); //x1-x2 plane
+    const x2x3p = new THREE.GridHelper(gridsize,gridlines,0x000000, 0x000000); //x2-x3 plane
+    x2x3p.rotation.set(Math.PI/2,0,0);
+    const x1x3p = new THREE.GridHelper(gridsize,gridlines,0x000000, 0x000000); //x1-x3 plane
+    x1x3p.rotation.set(0,0,Math.PI/2);
+
+    x1x2p.position.set(gridsize/2,0,gridsize/2);
+    x2x3p.position.set(gridsize/2,gridsize/2,0);
+    x1x3p.position.set(0,gridsize/2,gridsize/2);
+
+    const x1a = new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 0, 0), 10, 0xff0000); // X axis (red)
+    const x2a = new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 0), 10, 0x00ff00); // Y axis (green)
+    const x3a = new THREE.ArrowHelper(new THREE.Vector3(0, 0, 1), new THREE.Vector3(0, 0, 0), 10, 0x0000ff); // Z axis (blue)
+
+    const sphereGeo = new THREE.SphereGeometry(0.5,32,32);
+    const SphereMat = new THREE.MeshBasicMaterial({color:0xfff000});
+    const sphere = new THREE.Mesh(sphereGeo, SphereMat);
+
+//CONTENT ADDED TO SCENE/////////////////
+
+    scene.add(x1a);
+    scene.add(x2a);
+    scene.add(x3a);
+    scene.add(x1x2p);
+    scene.add(x2x3p);
+    scene.add(x1x3p);
+    scene.add(sphere);
+    scene.background = new THREE.Color(0x888888);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    renderer.render( scene, camera );
+
+
+
+
+      //Controls
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true; //smmoths the motion
+      controls.dampingFactor = 0.05;
+      controls.screenSpacePanning = false;
+      controls.minDistance = 20;
+      controls.maxDistance = 100;
+
+
+
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // Add event listener for window resize
+      window.addEventListener('resize', onWindowResize);
+
+      // Handle window resize
+      function onWindowResize() {
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        // Orbit Controls for user interaction
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true; // Smooth motion
-        controls.dampingFactor = 0.05;
-        controls.screenSpacePanning = false;
-        controls.minDistance = 1; // Min zoom
-        controls.maxDistance = 10; // Max zoom
-
-        // Load a simple 3D model (Cube)
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
-        camera.position.z = 2;
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            controls.update(); // Update controls
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // Handle resizing
-        window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        });
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+      }
     </script>
-</body>
+  </body>
 </html>
