@@ -44,7 +44,7 @@ gapSize: 0.5,
 scale: 1} );
 
 const xgeo = new THREE.BufferGeometry().setFromPoints(xpoints);
-const xline = new THREE.Line(xgeo,DashedLine);
+const xline = new THREE.Line(xgeo,BasicLine);
 xline.computeLineDistances();
 
 const ygeo = new THREE.BufferGeometry().setFromPoints(ypoints);
