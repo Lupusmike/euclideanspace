@@ -26,15 +26,15 @@
 
 
 const xpoints = [];
-xpoints.push(new THREE.Vector3(5,0,0));
-xpoints.push(new THREE.Vector3(5,0,5));
+xpoints.push(new THREE.Vector3(10,0,0));
+xpoints.push(new THREE.Vector3(10,0,5));
 
 const ypoints = [];
-ypoints.push(new THREE.Vector3(0,0,0));
-ypoints.push(new THREE.Vector3(0,0,5));
+ypoints.push(new THREE.Vector3(0,-6,0));
+ypoints.push(new THREE.Vector3(0,-6,5));
 
 const zpoints = [];
-zpoints.push(new THREE.Vector3(0,0,0));
+zpoints.push(new THREE.Vector3(0,0,5));
 zpoints.push(new THREE.Vector3(0,5,0));
 
     const BasicLine = new THREE.LineBasicMaterial( { color: 0x00ff99 } );
@@ -75,7 +75,7 @@ zline.computeLineDistances();
 
 const SphMred = new THREE.MeshBasicMaterial({color: 0xff0000});
 const PointP = new THREE.Mesh(sphereGeo, SphMred);
-PointP.position.set(5,-3,2);
+PointP.position.set(10,-6,5);
 
 
 //CONTENT ADDED TO SCENE/////////////////
