@@ -44,7 +44,7 @@ gapSize: 0.5,
 scale: 1} );
 
 const xgeo = new THREE.BufferGeometry().setFromPoints(xpoints);
-const xline = new THREE.LineSegments(xgeo,BasicLine);
+const xline = new THREE.LineSegments(xgeo,DashedLine);
 xline.computeLineDistances();
 
 const ygeo = new THREE.BufferGeometry().setFromPoints(ypoints);
@@ -88,6 +88,8 @@ PointP.position.set(5,-3,2);
     scene.add(x1x3p);
     scene.add(sphere);
 scene.add(xline);
+      scene.add(yline);
+      scene.add(zline);
 scene.add(PointP);
     scene.background = new THREE.Color(0x888888);
 
