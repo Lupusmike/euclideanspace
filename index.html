@@ -37,14 +37,14 @@ const zpoints = [];
 zpoints.push(new THREE.Vector3(0,0,0));
 zpoints.push(new THREE.Vector3(0,5,0));
 
-    const BasicLine = new THREE.LineBasicMaterial( { color: 0x00ffff } );
+    const BasicLine = new THREE.LineBasicMaterial( { color: 0x00ff99 } );
     const DashedLine = new THREE.LineDashedMaterial( { color: 0x0000ff,
 dashSize: 1,
 gapSize: 0.5,
 scale: 1} );
 
 const xgeo = new THREE.BufferGeometry().setFromPoints(xpoints);
-const xline = new THREE.Line(xgeo,BasicLine);
+const xline = new THREE.LineSegments(xgeo,BasicLine);
 xline.computeLineDistances();
 
 const ygeo = new THREE.BufferGeometry().setFromPoints(ypoints);
