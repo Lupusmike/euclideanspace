@@ -24,18 +24,18 @@
     const gridsize = 30;
 //SETUP END//////////////////////////////////////
 
-
+//10, -6, 5
 const xpoints = [];
-xpoints.push(new THREE.Vector3(10,0,0));
-xpoints.push(new THREE.Vector3(10,0,5));
+xpoints.push(new THREE.Vector3(0,-6,5));
+xpoints.push(new THREE.Vector3(10,-6,5));
 
 const ypoints = [];
-ypoints.push(new THREE.Vector3(0,-6,0));
-ypoints.push(new THREE.Vector3(0,-6,5));
+ypoints.push(new THREE.Vector3(10,0,5));
+ypoints.push(new THREE.Vector3(10,-6,5));
 
 const zpoints = [];
-zpoints.push(new THREE.Vector3(0,0,5));
-zpoints.push(new THREE.Vector3(0,5,0));
+zpoints.push(new THREE.Vector3(10,-6,0));
+zpoints.push(new THREE.Vector3(10,-6,5));
 
     const BasicLine = new THREE.LineBasicMaterial( { color: 0x00ff99 } );
     const DashedLine = new THREE.LineDashedMaterial( { color: 0x0000ff,
