@@ -33,9 +33,9 @@
     const x1x3p = new THREE.GridHelper(gridsize,gridlines,0x000000, 0x000000); //x1-x3 plane
     x1x3p.rotation.set(0,0,Math.PI/2);
 
-    x1x2p.position.set(gridsize/2,0,gridsize/2);
-    x2x3p.position.set(gridsize/2,gridsize/2,0);
-    x1x3p.position.set(0,gridsize/2,gridsize/2);
+    x1x2p.position.set((gridsize/2)-5,0,(gridsize/2)-5);
+    x2x3p.position.set((gridsize/2)-5,(gridsize/2,0)-5);
+    x1x3p.position.set(0,(gridsize/2)-5,(gridsize/2)-5);
 
     const x1a = new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 0, 0), 10, 0xff0000); // X axis (red)
     const x2a = new THREE.ArrowHelper(new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, 0), 10, 0x00ff00); // Y axis (green)
