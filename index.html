@@ -45,15 +45,15 @@ gapSize: 0.5,
 scale: 1} ); //LineDashedMaterial
 
 const xgeo = new THREE.BufferGeometry().setFromPoints(xpoints);
-const xline = new THREE.MeshLine(xgeo,DashedLine);
+const xline = new THREE.Line(xgeo,DashedLine);
 xline.computeLineDistances();
 
 const ygeo = new THREE.BufferGeometry().setFromPoints(ypoints);
-const yline = new THREE.MeshLine(ygeo,DashedLine);
+const yline = new THREE.Line(ygeo,DashedLine);
 yline.computeLineDistances();
 
 const zgeo = new THREE.BufferGeometry().setFromPoints(zpoints);
-const zline = new THREE.MeshLine(zgeo,DashedLine);
+const zline = new THREE.Line(zgeo,DashedLine);
 zline.computeLineDistances();
 
     const x1x2p = new THREE.GridHelper(gridsize,gridlines,0x000000, 0x000000); //x1-x2 plane
@@ -63,7 +63,7 @@ zline.computeLineDistances();
     x1x3p.rotation.set(0,0,Math.PI/2);
 
     x1x2p.position.set((gridsize/2)-5,0,(gridsize/2)-5);
-    x2x3p.position.set((gridsize/2)-5,(gridsize/2,0)+10,0);
+    x2x3p.position.set((gridsize/2)-5,(gridsize/2)+10,0);
     x1x3p.position.set(0,(gridsize/2)-5,(gridsize/2)-5);
 
     const x1a = new THREE.ArrowHelper(new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 0, 0), 20, 0xff0000); // X axis (red)
