@@ -60,7 +60,7 @@ zline.computeLineDistances();
     const x1x3p = new THREE.GridHelper(gridsize,gridlines,0x000000, 0x000000); //x1-x3 plane
     x1x3p.rotation.set(0,0,Math.PI/2);
 
-    x1x2p.position.set((gridsize/2)-5,0,(gridsize/2)-5);
+    x1x2p.position.set((gridsize/2)-5,0,(gridsize/2)+5);
     x2x3p.position.set((gridsize/2)-5,(gridsize/2,0)-5,0);
     x1x3p.position.set(0,(gridsize/2)-5,(gridsize/2)-5);
 
