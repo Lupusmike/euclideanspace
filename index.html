@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three.meshline@1.3.0/THREE.MeshLine.min.js"></script>
     <title>Euclidean Space</title>
   </head>
   <body style="margin: 0;overflow: hidden;">
@@ -44,15 +45,15 @@ gapSize: 0.5,
 scale: 1} );
 
 const xgeo = new THREE.BufferGeometry().setFromPoints(xpoints);
-const xline = new THREE.LineSegments(xgeo,DashedLine);
+const xline = new THREE.MeshLine(xgeo,DashedLine);
 xline.computeLineDistances();
 
 const ygeo = new THREE.BufferGeometry().setFromPoints(ypoints);
-const yline = new THREE.Line(ygeo,DashedLine);
+const yline = new THREE.MeshLine(ygeo,DashedLine);
 yline.computeLineDistances();
 
 const zgeo = new THREE.BufferGeometry().setFromPoints(zpoints);
-const zline = new THREE.Line(zgeo,DashedLine);
+const zline = new THREE.MeshLine(zgeo,DashedLine);
 zline.computeLineDistances();
 
     const x1x2p = new THREE.GridHelper(gridsize,gridlines,0x000000, 0x000000); //x1-x2 plane
