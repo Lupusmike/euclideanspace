@@ -142,6 +142,7 @@ scene.add(PointP);
         
         const input = document.getElementById("coords").value.trim();
         const values = input.split(",").map(Number);
+      alert(values);
         
         if (values.length === 4 && values.every(v => !isNaN(v))) {
             point(values[0], values[1], values[2], values[3]);
