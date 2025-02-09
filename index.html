@@ -136,6 +136,21 @@ scene.add(PointP);
         sphere.position.set(x2,x3,x1);
         scene.add(sphere);
       }
+      document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("pointForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent page reload
+        
+        const input = document.getElementById("coords").value.trim();
+        const values = input.split(",").map(Number);
+        
+        if (values.length === 4 && values.every(v => !isNaN(v))) {
+            point(values[0], values[1], values[2], values[3]);
+        } else {
+            alert("Please enter valid coordinates (x1, x2, x3) separated by commas.");
+        }
+    });
+});
+
       // Add event listener for window resize
       window.addEventListener('resize', onWindowResize);
 
@@ -146,8 +161,8 @@ scene.add(PointP);
         camera.updateProjectionMatrix();
       }
     </script>
-    <form onsubmit="point()">
-      <input type=text></input>
+    <form id="pointform" style="position: absolute; top: 10px; left: 10px; background: white; padding: 10px;">
+      <input type="text" id="coords" placeholder="x1, x2, x3, color" required type=text></input>
       <button type="submit">submit</button>
     </form>
   </body>
