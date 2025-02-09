@@ -125,9 +125,9 @@ scene.add(PointP);
 
       function animate() {
         requestAnimationFrame(animate);
+        controls.update();
         renderer.render(scene, camera);
       }
-      animate();
 
       function point(x1,x2,x3, color) {
         const sphereGeo = new THREE.SphereGeometry(0.5,32,32);
@@ -160,6 +160,7 @@ scene.add(PointP);
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
       }
+      animate();
     </script>
     <form id="pointform" style="position: absolute; top: 10px; left: 10px; background: white; padding: 10px;">
       <input type="text" id="coords" placeholder="x1, x2, x3, color" required type=text></input>
