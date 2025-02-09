@@ -129,6 +129,13 @@ scene.add(PointP);
       }
       animate();
 
+      function point(x1,x2,x3, color) {
+        const sphereGeo = new THREE.SphereGeometry(0.5,32,32);
+        const SphereMat = new THREE.MeshBasicMaterial({color:color});
+        const sphere = new THREE.Mesh(sphereGeo, SphereMat);
+        sphere.position.set(x2,x3,x1);
+        scene.add(sphere);
+      }
       // Add event listener for window resize
       window.addEventListener('resize', onWindowResize);
 
@@ -139,5 +146,6 @@ scene.add(PointP);
         camera.updateProjectionMatrix();
       }
     </script>
+    <input type=text></input>
   </body>
 </html>
