@@ -30,7 +30,7 @@
 
     const gridlines = 20;
     const gridsize = 30;
-    labels = [];
+    const labels = [];
 
     //Controls
     const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -111,10 +111,10 @@
     scene.add(x3a);
     //scene.add(x1x2p); scene.add(x2x3p); scene.add(x1x3p);
     scene.add(sphere);
-    scene.add(xline);
-    scene.add(yline);
-    scene.add(zline);
-    scene.add(PointP);
+    //scene.add(xline);
+    //scene.add(yline);
+    //scene.add(zline);
+    //scene.add(PointP);
     scene.background = new THREE.Color(0x888888);
 
     xline.computeLineDistances();
@@ -156,23 +156,23 @@
 
     function preset1() {
       point(1, 3, 2, 0x99ff00); //A
-      createLabel("A", 1, 3, 2);
+      createLabel("A (1, 3, 2)", 1, 3, 2);
       point(1, 7, 2, 0x99ff00); //B
-      createLabel("B", 1, 7, 2);
+      createLabel("B (1, 7, 2)", 1, 7, 2);
       line(1, 3, 2, 1, 7, 2); //AB
     }
     function preset2() {
       point(-3, 3, 2); //C
-      createLabel("C", -3, 3, 2);
+      createLabel("C (-3, 3, 2)", -3, 3, 2);
       point(-3, 7, 2); //D
-      createLabel("D", -3, 7, 2);
+      createLabel("D (-3, 7, 2)", -3, 7, 2);
       line(-3, 3, 2, -3, 7, 2) //CD
 
       line(1, 3, 2, -3, 3, 2); //AC
       line(1, 7, 2, -3, 7, 2); //BD
 
       point(-1, 5, 6); //S
-      createLabel("S", -1, 5, 6);
+      createLabel("S (-1, 5, 6)", -1, 5, 6);
 
       line(1, 3, 2, -1, 5, 6); //AS
       line(1, 7, 2, -1, 5, 6); //BS
@@ -181,11 +181,11 @@
     }
     function preset3() {
       point(5, 3, 2); //C
-      createLabel("C", 5, 3, 2);
+      createLabel("C (5, 3, 2)", 5, 3, 2);
       point(5, 7, 2); //D
-      createLabel("D", 5, 7, 2);
+      createLabel("D (5, 7, 2)", 5, 7, 2);
       point(3, 5, 6); //S
-      createLabel("S", 3, 5, 6);
+      createLabel("S (3, 5, 6)", 3, 5, 6);
 
       line(1, 3, 2, 5, 3, 2); //AC
       line(5, 3, 2, 5, 7, 2) //CD
@@ -265,6 +265,11 @@
     // Add event listener for window resize
     window.addEventListener('resize', onWindowResize);
 
+    function toggleLabels() {
+      labels.forEach(label => {
+        label.visible = !label.visible;
+      });
+    }
     function animate() {
       requestAnimationFrame(animate);
       controls.update();
@@ -302,6 +307,9 @@
   </form>
   <form style="position: absolute; top: 250px; left: 10px; background: white; padding: 10px;">
     <button onclick="event.preventDefault(); preset3();">Lösung2</button>
+  </form>
+  <form style="position: absolute; top: 290px; left: 10px; background: white; padding: 10px;">
+    <button onclick="event.preventDefault(); toggleLabels();">Toggle Labels</button>
   </form>
 
 </body>
